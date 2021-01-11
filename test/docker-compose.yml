@@ -15,7 +15,7 @@ services:
             - ./etl/:/pentaho/project/
         tty: true
     pgsql-pentaho-kettle: 
-        image: postgres:9.4
+        image: postgres:9.6
         container_name: pgsql-pentaho-kettle
         ports:
             - 5432:5432
