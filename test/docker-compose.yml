@@ -1,12 +1,13 @@
+
 version: '3'
 services:
     pentaho-kettle:
-        image: oncase/pentaho-kettle:latest
+        image: pentaho-kettle:latest
         build: ..
         depends_on: 
           - pgsql-pentaho-kettle
         container_name: pentaho-kettle
-        command: job /pentaho/project/main.kjb
+        command: job /test/etl/main.kjb
         env_file: 
           - test.env
         links:
