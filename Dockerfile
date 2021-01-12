@@ -57,6 +57,7 @@ USER pentaho
 # unzip would take forever on deploy
 ##########################################################################################
 COPY --chown=pentaho:pentaho pentaho /pentaho
+
 # RUN wget -q -O kettle.zip ${PENTAHO_DOWNLOAD_URL} && \
 #   unzip -qq kettle.zip && \
 #   rm -rf kettle.zip
@@ -71,6 +72,7 @@ WORKDIR /pentaho/data-integration
 
 # Adds connections config files
 ADD --chown=pentaho:pentaho scripts/* ./
+ADD --chown=pentaho:pentaho test/* ./
 
 # Changes spoon.sh to expose memory to env-vars
 RUN sudo sed -i \
@@ -91,4 +93,4 @@ RUN sudo python3 -m pip --no-cache-dir install --upgrade awscli
 
 ENTRYPOINT ["/pentaho/data-integration/run.sh"]
 
-#EXPOSE 9191
+# EXPOSE 9191
